@@ -1,39 +1,82 @@
-# MLPR Project
+# Fingerprint Recognition with Machine Learning
 
-Project of *Machine Learning and Pattern Recognition 2024* course at Politecnico di Torino.  
-**Exam project grade: 10/10**
+Implementation and evaluation of **classical machine learning models**
+for fingerprint matching.
 
-## Description
+The project compares **generative and discriminative approaches**,
+including calibration and model fusion, on a binary classification
+task.\
+Developed as part of the *Machine Learning and Pattern Recognition*
+course at Politecnico di Torino (**10/10**).
 
-This project investigates various approaches to a binary classification task aimed at identifying matching fingerprint pairs. The classifiers studied include:
+------------------------------------------------------------------------
 
-- **Multivariate Gaussian Model (MVG)**
-- **Logistic Regression (LR)**
-- **Support Vector Machines (SVM)**
-- **Gaussian Mixture Model (GMM)**
+## Features
 
-The dataset used is 6-dimensional, derived from high-level features extracted from fingerprint images. Samples are labeled as either *genuine* (positive class) or *impostor* (negative class).
+-   Comparative analysis of **MVG, Logistic Regression, SVM, and GMM**
+-   Evaluation under **different priors and cost-sensitive scenarios**
+-   Study of **feature distributions and class separability**
+-   **Score calibration and model fusion** for performance improvement
 
-## Summary of Analyses
+------------------------------------------------------------------------
 
-The project performs a thorough evaluation of multiple classification models on a fingerprint-matching task.
+## Overview
 
-- **Data Exploration**: The dataset shows varying separability among features. The last two features are highly discriminative but multimodal, while the first two are largely overlapping.
+The task consists of classifying fingerprint pairs as:
 
-- **Dimensionality Reduction**: PCA and LDA offered limited improvements. Due to the low dimensionality of the dataset, working with original features yielded better results.
+-   **Genuine** (same fingerprint)
+-   **Impostor** (different fingerprints)
 
-- **Multivariate Gaussian Models (MVG)**: Full and naive models performed best, confirming low inter-feature correlation. PCA preprocessing often degraded performance.
+The dataset is a **6-dimensional feature representation** extracted from
+fingerprint images.
 
-- **Application Scenarios**: Model robustness was tested across different priors and cost setups. MVG models demonstrated resilience, especially with proper calibration.
+The project investigates how different models behave under
+**distributional complexity**, **non-linearity**, and
+**application-dependent costs**.
 
-- **Logistic Regression**: Performance improved significantly with polynomial feature expansion. Regularization was effective only when training data was limited.
+------------------------------------------------------------------------
 
-- **Support Vector Machines (SVM)**: Non-linear kernels (especially polynomial) outperformed linear models, though SVMs showed calibration issues due to non-probabilistic scoring.
+## Models
 
-- **Gaussian Mixture Models (GMM)**: The best standalone model, particularly the diagonal version with 8 components, captured multimodal structures and achieved the lowest detection cost.
+-   **Multivariate Gaussian Models (MVG)**
+-   **Logistic Regression (LR)**
+-   **Support Vector Machines (SVM)**
+-   **Gaussian Mixture Models (GMM)**
 
-- **Calibration and Fusion**: Score calibration had limited impact, but model fusion (SVM + GMM) significantly improved performance and reliability, achieving the best overall results.
+------------------------------------------------------------------------
 
-The final fused model demonstrated strong generalization on the evaluation set, validating its effectiveness across multiple application scenarios.
+## Methodology
 
-**For detailed analysis, methodology, and experimental results, please refer to the `report.pdf` file.**
+-   Feature analysis and visualization\
+-   Dimensionality reduction (PCA, LDA)\
+-   Linear vs non-linear model comparison\
+-   Evaluation using cost-based metrics (DCF)\
+-   Score calibration and fusion
+
+------------------------------------------------------------------------
+
+## Results
+
+-   **GMM (diagonal, 8 components)** achieved the best standalone
+    performance\
+-   **Polynomial SVMs** effectively captured non-linear feature
+    interactions\
+-   **Model fusion (SVM + GMM)** yielded the best overall results\
+-   Calibration had limited impact compared to fusion
+
+------------------------------------------------------------------------
+
+## Report
+
+A detailed description of the methodology, experiments, and results is
+available in:
+
+📄 `report.pdf`
+
+------------------------------------------------------------------------
+
+## Notes
+
+This project emphasizes: - rigorous evaluation of ML models\
+- cost-sensitive decision making\
+- benefits of combining complementary models
